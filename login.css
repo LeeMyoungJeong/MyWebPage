@@ -1,0 +1,194 @@
+*{margin: 0; padding: 0;}
+
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    /* 글꼴은 작은따옴표, 큰따옴표 상관 없다. */
+}
+
+/* reset */
+input {
+    outline: none;
+    border: none;
+    background-color: transparent;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+    text-align: center;
+}
+
+.container {
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(185,189,92,1) 0%, rgba(202,189,81,1) 0%, rgba(253,187,45,1) 0%, rgba(239,187,55,1) 0%, rgba(253,187,45,1) 0%, rgba(186,189,92,1) 19%, rgba(186,189,91,1) 23%, rgba(193,189,86,1) 34%, rgba(253,187,45,1) 34%, rgba(200,82,200,1) 34%, rgba(253,187,45,1) 35%, rgba(213,188,73,1) 52%);;
+
+}
+
+/* 로그인 영역 */
+.login-wrap {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* 이렇게 해서 정 가운데로 오게끔 해준다. */
+    width: 350px;
+    height: 530px;
+    padding: 20px;/* 패딩은 안에서부터의 넓이를 의미한다. 30정도 주는게 적당할 듯 하다 */
+    border-radius: 20px;
+    background-color: rgb(226, 218, 199);
+    box-shadow: 5px 5px 10px rgba(248, 246, 246, 0.4);
+}
+
+/* inner */
+#login {
+    width: 100%; 
+    height: 100%;
+   
+}
+
+#login .login-logo {
+    height: 100px;
+    margin-top: 50px;
+    margin-bottom: 30px; /* << 로그인 로고에서부터 아래쪽에 갖는 여백을 의미함
+                                크면 클수록 아래의 요소들이 아래로 더 내려가게 됨 */
+/* 여기 문제가 있었음.. */
+}
+
+#login .login-logo img {
+    width: 100%; /* 부모요소의 100의 넓이를 갖도록 100%의 값을 할당 */
+    height: 100px;  /* <<<여기를 손보니까 로고 자체가 위로 올라간다. */
+    object-fit: contain;
+}
+
+/* id, pw */
+#login .login-inputbox {
+    position: relative;/* 부모요소의 크기로부터 상대적일 수 있게 */
+    height: 50px;
+    margin-bottom: 10px;
+}
+
+#login .login-inputbox input {
+    width: 100%;
+    height: 32px;
+    padding-left: 5px;
+    font-size: 1rem;
+    border-bottom: 1px solid #aaa;  /* border-bottom 만 색깔 표시하게끔 일부러 지정함
+    만약에 border-top이 있으면 좀 이상할듯한데 한번 해보면 */
+    /* border-top: 1px solid yellow; ㅇㅇ 확실히 이상하다*/ 
+}
+
+/* ::placeholder
+    - input태그의 placeholder 속성을 선택하는 가상선택자
+    가상선택자 개념 아직도 잘 모르겠다
+*/
+
+#login .login-inputbox input::placeholder {
+    color: #aaa;
+    /* 임시로 갖다 쓰는 뭐 그런개념인가 */
+}
+
+#login .login-inputbox input ~ .border {
+    position: absolute;
+    top: 30px;
+    left: 0;
+    width: 0;
+    border: 0px solid cornflowerblue;
+    background-color: cornflowerblue;
+}
+
+/* :focus */
+/*  - input 태그에 마우스 커서가 놓인 상태를 선택
+
+*/
+
+#login .login-inputbox input:focus ~ .border {
+    width: 100%;
+    border-width: 1px;
+    transition: width 0.5s;
+    transition-timing-function: ease-in-out;
+
+}
+
+#login .login-remember {
+    height: 30px;
+    margin-bottom: 25px;
+    text-align: center;
+
+}
+
+#login .login-remember label{
+    position: relative;
+    padding-left: 25px;
+    color: #aaa;
+    cursor: pointer;
+    margin-right: 15px;
+
+}
+
+#login .login-remember label input {
+    position: absolute;
+    width: 0;
+    height: 0;
+    opacity: 0;
+    cursor: pointer;
+
+}
+
+#login .login-remember label .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    background-color: #aaa;
+}
+
+/* 체크모양 */
+#login .login-remember label .checkmark::after {
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: 7px;
+    width: 4px;
+    height: 8px;
+    border: solid wheat;
+    border-width: 0 3px 3px 0;
+    transform: rotate(45deg);
+}
+
+#login .login-remember label input:checked ~ .checkmark {
+    background-color: cornflowerblue;
+}
+
+#login .login-remember label input:checked ~ span {
+    color: cornflowerblue;
+
+}
+
+/* 버튼 */
+#login .login-btnbox {
+    height: 50px;
+    margin-bottom: 10px;
+}
+
+#login .login-btnbox .login-btn {
+    display: block;
+    background-color: cornflowerblue;
+    /* color: white;  >>> 이거 뭐지 */
+    font-size: 1.2rem;
+    color: white;
+    line-height: 50px;
+    border-radius: 5px;
+}
+
+#login .login-btnbox .login-btn:hover {
+    filter: brightness(90%);
+}
+/* 카피라이트 */
+#login .copy {
+    height: 15px;margin-top: 30px; margin-bottom: 10px;
+}
+#login .copy p {
+    font-size: 0.8rem;  text-align: center;
+}
